@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.starwars_project.adapter.CharactersRecyclerViewAdapter;
 import com.example.starwars_project.api.StarWarsRetrofitServiceImpl;
 import com.example.starwars_project.databinding.ListCharactersFragmentLayoutBinding;
+import com.example.starwars_project.model.Character;
 import com.example.starwars_project.model.CharacterRequest;
 import com.example.starwars_project.repository.StarWarsRepository;
+import com.example.starwars_project.ui.dialog.CharacterDetailsDialog;
 import com.example.starwars_project.viewmodel.CharacterViewModel;
 import com.example.starwars_project.viewmodel.CharacterViewModelFactory;
 
@@ -45,8 +47,12 @@ public class ListCharactersFragment extends Fragment implements CharactersRecycl
     }
 
     @Override
-    public void onCharacterClick(int position, String name) {
-        Toast.makeText(mBinding.getRoot().getContext(), name, Toast.LENGTH_SHORT).show();
+    public void onCharacterClick(int position, Character character) {
+        CharacterDetailsDialog characterDetailsDialog = new CharacterDetailsDialog(character);
+        characterDetailsDialog
+                .show(requireActivity().getSupportFragmentManager(), "CardDialog");
+        Toast.makeText(mBinding.getRoot().getContext(), character.getStarships().toString(),
+                Toast.LENGTH_SHORT).show();
     }
 
     private void setRecyclerView(CharacterRequest characterRequest) {

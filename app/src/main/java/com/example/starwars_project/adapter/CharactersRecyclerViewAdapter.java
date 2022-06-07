@@ -62,7 +62,7 @@ public class CharactersRecyclerViewAdapter extends
         public void onClick(View view) {
             int position = getAdapterPosition();
             Character character = mCharacterList.get(position);
-            listener.onCharacterClick(position, character.getName());
+            listener.onCharacterClick(position, character);
         }
 
         protected void bind(Character character) {
@@ -71,6 +71,6 @@ public class CharactersRecyclerViewAdapter extends
     }
 
     public interface OnClickItem {
-        void onCharacterClick(int position, String name);
+        void onCharacterClick(int position, Character character);
     }
 }

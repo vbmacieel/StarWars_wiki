@@ -2,6 +2,7 @@ package com.example.starwars_project.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Character {
@@ -17,6 +18,11 @@ public class Character {
     }
 
     public List<String> getStarships() {
-        return starships;
+        List<String> starshipUrlList = new ArrayList<>();
+        for (String starship : this.starships) {
+            String starshipUrl = starship.substring(starship.lastIndexOf("/") + 1);
+            starshipUrlList.add(starshipUrl);
+        }
+        return starshipUrlList;
     }
 }
