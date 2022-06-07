@@ -20,7 +20,7 @@ public class Character {
     public List<String> getStarships() {
         List<String> starshipUrlList = new ArrayList<>();
         for (String starship : this.starships) {
-            String starshipUrl = starship.substring(starship.lastIndexOf("/") + 1);
+            String starshipUrl = starship.substring(starship.lastIndexOf("/") - 2);
             starshipUrlList.add(starshipUrl);
         }
         return starshipUrlList;

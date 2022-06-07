@@ -14,5 +14,5 @@ public interface StarWarsRetrofitService {
     Call<CharacterRequest> listCharacters();
 
     @GET("starships/{id}")
-    Call<CharacterRequest> listCharacterDetails(@Path("id") List<Integer> starships);
+    Call<String> listStarships(@Path("id") String starshipId);
 }
